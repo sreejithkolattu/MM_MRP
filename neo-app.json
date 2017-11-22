@@ -1,0 +1,43 @@
+{
+  "welcomeFile": "index.html",
+  "routes": [
+    {
+      "path": "/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "version": "1.28.34",
+        "preferLocal": true,
+        "entryPath": "/resources"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/sap/opu/odata",
+      "target": {
+        "type": "destination",
+        "name": "NGD",
+        "entryPath": "/sap/opu/odata"
+      },
+      "description": "Gateway Development Client"
+    },
+    {
+      "path": "/sap/bc/ui5_ui5",
+      "target": {
+        "type": "destination",
+        "name": "NGD",
+        "entryPath": "/sap/bc/ui5_ui5"
+      },
+      "description": "Gateway Development Client"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources"
+      },
+      "description": "SAPUI5 Test Resources"
+    }
+  ]
+}

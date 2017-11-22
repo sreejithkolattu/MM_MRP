@@ -1,0 +1,55 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form"
+  controllerName="generated.app.controller.dialog_3">
+  <m:Dialog horizontalScrolling="true" showHeader="false" state="None" stretch="false" title="Update PO/PIR Parameters" type="Standard"
+    verticalScrolling="true">
+    <m:Toolbar id="updateParamBar" visible="true" width="" active="false" enabled="true" design="Auto">
+      <m:content>
+        <m:Button type="Transparent" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPrevious"
+          icon="sap-icon://navigation-left-arrow" tooltip="Previous"/>
+        <m:Button type="Transparent" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonNext"
+          icon="sap-icon://navigation-right-arrow" tooltip="Next"/>
+        <m:ToolbarSpacer/>
+        <m:Button type="Transparent" icon="sap-icon://decline" tooltip="close" press="_onButtonCancel"/>
+      </m:content>
+    </m:Toolbar>
+    <m:content>
+      <m:ObjectHeader id="objHeader" backgroundDesign="Transparent" intro="{i18n>labelPurNumber}">
+        <m:attributes>
+          <m:ObjectAttribute id="objMaterial" title="{i18n>labelMat}"/>
+          <m:ObjectAttribute id="objPlant" title="{i18n>labelPlant}"/>
+          <m:ObjectAttribute id="objPIR" title="{i18n>labelPir}"/>
+        </m:attributes>
+      </m:ObjectHeader>
+      <form:SimpleForm id="formPOValue" minWidth="-1" maxContainerCols="1" layout="ResponsiveLayout" editable="false" visible="true"
+        title="{i18n>labelPoParam}">
+        <form:content id="poParam">
+          <m:Label id="labelPushout" text="{i18n>labelPushoutind}" design="Standard" width="100%" textAlign="Begin" textDirection="Inherit"/>
+          <m:Switch id="inputPushout" state="false" type="AcceptReject" enabled="true" visible="true" change="onChangePushOut"/>
+          <m:Label id="labelDelivery" text="{i18n>labelDelind}" design="Standard" width="100%" textAlign="Begin" textDirection="Inherit"/>
+          <m:Switch id="inputDelivery" state="false" type="AcceptReject" enabled="true" visible="true" change="onChangeDelivery"/>
+        </form:content>
+      </form:SimpleForm>
+      <form:SimpleForm id="formPIRValue" minWidth="-1" maxContainerCols="1" layout="ResponsiveLayout" editable="false" visible="true"
+        title="PIR Parameter">
+        <form:content id="pirParam">
+          <m:Label id="labelPush" text="{i18n>labelPushlimit}" design="Standard" width="100%" textAlign="Begin" textDirection="Inherit"/>
+          <m:Input id="inputPush" type="Number" enabled="true" visible="true" width="50%"/>
+          <m:Label id="labelELT" text="{i18n>labelExpleadtime}" design="Standard" width="100%" textAlign="Begin" textDirection="Inherit"/>
+          <m:Input id="inputElt" type="Number" enabled="true" visible="true" width="50%"/>
+          <m:Label id="labelPushthreshold" text="{i18n>labelPushthreshold}" design="Standard" width="100%" textAlign="Begin" textDirection="Inherit"/>
+          <m:Input id="inputPushThreshold" type="Number" enabled="true" visible="true" width="50%"/>
+        </form:content>
+      </form:SimpleForm>
+    </m:content>
+    <m:beginButton/>
+    <m:buttons>
+      <m:Button text="{i18n>buttonUpd}" type="Accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+        press="_onButtonUpdate"/>
+      <m:Button text="{i18n>buttonCancel}" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+        press="_onButtonCancel"/>
+    </m:buttons>
+    <m:customHeader/>
+    <m:endButton/>
+    <m:subHeader/>
+  </m:Dialog>
+</mvc:View>

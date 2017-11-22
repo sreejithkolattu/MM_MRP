@@ -1,0 +1,68 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:m="sap.m" xmlns:table="sap.ui.table">
+  <Popover title="PO Items" class="sapUiContentPadding" placement="Bottom" contentWidth="850px" modal="true">
+    <!--<Table items = "{path : '/Tracks', filters: [{ path: 'MyApprovals', operator: 'EQ', value1: 'true'}] }">-->
+    <table:Table id="popoverTable" width="100%" enableCellFilter="{ui>/cellFilterOn}" enableSelectAll='false'>
+      <table:columns>
+        <table:Column name="Ponumber" width="auto" hAlign="Left">
+          <Label text="PO Number"/>
+          <table:template>
+            <ObjectIdentifier title="{Ponumber}" text="Item No: {Poitem}" titleActive="true" visible="true" titlePress="onPressPONumber"/>
+          </table:template>
+        </table:Column>
+        <table:Column name="Poqty" width="75px" hAlign="Left">
+          <Label text="PO Qty"/>
+          <table:template>
+            <ObjectNumber number="{path: 'Poqty', type: 'sap.ui.model.type.String'}" unit="Unit" emphasized="true" state="None"/>
+          </table:template>
+        </table:Column>
+        <table:Column name="TransitLt" width="75px" hAlign="Left">
+          <Label text="TLT"/>
+          <table:template>
+            <Text text="{Transitleadtime}"/>
+          </table:template>
+        </table:Column>
+        <table:Column name="Reschleadtime" width="75px" hAlign="Left">
+          <Label text="RLT"/>
+          <table:template>
+            <Text text="{Reschleadtime}"/>
+          </table:template>
+        </table:Column>
+        <table:Column name="OrderLt" width="75px" hAlign="Left">
+          <Label text="OLT"/>
+          <table:template>
+            <Text text="{Orderleadtime}"/>
+          </table:template>
+        </table:Column>
+        <table:Column name="Key" width="auto" hAlign="Left">
+          <Label text="Key/Rule"/>
+          <table:template>
+            <ObjectIdentifier title="{Key}" text="{Rulename}" titleActive="true" visible="true" titlePress="onPressRuleName"/>
+          </table:template>
+        </table:Column>
+        <table:Column name="Action" width="auto" hAlign="Left">
+          <Label text="Action"/>
+          <table:template>
+            <ObjectStatus text="{Action}"/>
+          </table:template>
+        </table:Column>
+        <table:Column name="Rescheddate" width="170px" hAlign="Left">
+          <Label text="Reschedule Date"/>
+          <table:template>
+            <DatePicker value="{path: 'Reschdeldate',type:'sap.ui.model.type.Date',formatOptions: {strictParsing: true,UTC: 'true'}}" enabled="true"
+              visible="true" width="auto"/>
+          </table:template>
+          <!--<m:header>-->
+          <!--  <m:Text text="Reschedule Date"/>-->
+          <!--</m:header>-->
+        </table:Column>
+      </table:columns>
+    </table:Table>
+    <footer>
+      <Toolbar>
+        <ToolbarSpacer/>
+        <Button id="update" type="Accept" text="Update" press="_onUpdate"/>
+        <Button id="cancel" text="Cancel" press="_onCancel"/>
+      </Toolbar>
+    </footer>
+  </Popover>
+</core:FragmentDefinition>

@@ -1,0 +1,33 @@
+{
+  "mockpreview": {
+    "mockUri": "",
+    "metadataFilePath": "",
+    "loadJSONFiles": false,
+    "loadCustomRequests": false,
+    "mockRequestsFilePath": ""
+  },
+  "deploy": {
+    "destination": "NGD",
+    "name": "Z_MM_MRP_FIORI"
+  },
+  "basevalidator": {
+    "services": {
+      "js": "jsValidator",
+      "xml": "fioriXmlAnalysis"
+    }
+  },
+  "generation": [
+    {
+      "templateId": "ui5template.basicSAPUI5ApplicationComponent",
+      "templateVersion": "1.4.0",
+      "dateTimeStamp": "Mon, 28 Aug 2017 16:14:25 GMT"
+    }
+  ],
+  "translation": {
+    "translationDomain": "",
+    "supportedLanguages": "",
+    "defaultLanguage": "",
+    "defaultI18NPropertyFile": "",
+    "resourceModelName": ""
+  }
+}

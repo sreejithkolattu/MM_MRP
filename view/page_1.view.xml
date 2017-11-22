@@ -1,0 +1,155 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="generated.app.controller.page_1" xmlns:m="sap.m" xmlns:variants="sap.ui.comp.variants"
+  xmlns:filterbar="sap.ui.comp.filterbar" xmlns:core="sap.ui.core" xmlns="sap.ui.table" xmlns:html="http://www.w3.org/1999/xhtml">
+  <html:style>
+    .sapMObjectIdentifierTitle .sapMLnk, .sapMObjectIdentifierTitle .sapMText { overflow: visible; font-weight: bold; font-size: 0.875rem;
+    display: inline-block; word-wrap: break-word; white-space: normal; }
+  </html:style>
+  <m:Page id="page1" title="{i18n>mrpTitle}">
+    <m:content>
+      <variants:VariantManagement id="variantMRP" select="onVariantSelect" save="onVariantSave" enabled="true" manage="onVariantManage"
+        variantItems="{/VariantSet}">
+        <variants:variantItems>
+          <variants:VariantItem key="{Variantname}" text="{Variantname}"/>
+        </variants:variantItems>
+      </variants:VariantManagement>
+      <filterbar:FilterBar id="filterPo" useToolbar="true" showGoOnFB="true" search="onFilterGo" filterBarExpanded="true">
+        <filterbar:filterItems>
+          <filterbar:FilterItem name="FilterBar_Search" label="{i18n>labelSearch}" visible="false">
+            <filterbar:control>
+              <m:SearchField placeholder=" "/>
+            </filterbar:control>
+          </filterbar:FilterItem>
+          <filterbar:FilterItem label="{i18n>labelPlant}"
+            name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-Fiori_ListReport_ComboBoxFilter-1490276804794---0">
+            <filterbar:control>
+              <m:Select forceSelection="false" id="userPlantId" items="{ path: '/UserAuthSet' }" change="onPlantSelect">
+                <core:Item key="{Werks}" text="{Werks}"/>
+              </m:Select>
+            </filterbar:control>
+          </filterbar:FilterItem>
+          <filterbar:FilterItem label="{i18n>labelPurchasing}"
+            name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-Fiori_ListReport_ComboBoxFilter-1490276810127---0">
+            <filterbar:control>
+              <m:Select forceSelection="false" id="userPUId" items="{}" change="onPUSelect">
+                <core:Item key="{Purgrp}" text="{Purgrp}"/>
+              </m:Select>
+            </filterbar:control>
+          </filterbar:FilterItem>
+          <filterbar:FilterItem label="{i18n>labelMrp}"
+            name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-Fiori_ListReport_ComboBoxFilter-1490276816921---0">
+            <filterbar:control>
+              <m:MultiInput id="multiMrp" valueHelpRequest="onValueHelpRequestMrpc" maxTokens="5" valueHelpOnly="true" tokenChange="onTokenValue"/>
+            </filterbar:control>
+          </filterbar:FilterItem>
+          <filterbar:FilterItem label="{i18n>labelMatgrp}"
+            name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-Fiori_ListReport_StandardFilter-1---0">
+            <filterbar:control>
+              <m:MultiInput id="multiMatGrp" valueHelpRequest="onValueHelpRequestMatGrp" maxTokens="5" valueHelpOnly="true" tokenChange="onTokenValue"/>
+            </filterbar:control>
+          </filterbar:FilterItem>
+          <filterbar:FilterItem label="{i18n>labelMat}"
+            name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-Fiori_ListReport_StandardFilter-1490276792203---0">
+            <filterbar:control>
+              <m:MultiInput id="multiMaterial" valueHelpRequest="onValueHelpRequestMat" maxTokens="5" valueHelpOnly="true" tokenChange="onTokenValue"/>
+            </filterbar:control>
+          </filterbar:FilterItem>
+          <filterbar:FilterItem label="{i18n>labelVendor}"
+            name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-Fiori_ListReport_StandardFilter-1490276798373---0">
+            <filterbar:control>
+              <m:MultiInput id="multiVendor" valueHelpRequest="onValueHelpRequestVendor" maxTokens="5" valueHelpOnly="true" tokenChange="onTokenValue"/>
+            </filterbar:control>
+          </filterbar:FilterItem>
+        </filterbar:filterItems>
+      </filterbar:FilterBar>
+    </m:content>
+    <m:content id="poTableContent">
+      <m:VBox>
+        <m:items>
+          <Table id="Potable" width="100%" threshold="50" selectionMode="MultiToggle"
+          visibleRowCount="5" rows="{}" enableCellFilter="{ui>/cellFilterOn}"
+            enableSelectAll='false' showColumnVisibilityMenu="true">
+            <toolbar>
+              <m:OverflowToolbar design="Transparent">
+              <m:Label text="PO Items" />
+                  <m:ToolbarSpacer></m:ToolbarSpacer>
+                  <m:Button id="buttonUpdate" text="{i18n>buttonUpdate}" type="Emphasized" press="onUpdateParam"/>
+                  <m:Button text="" icon="sap-icon://refresh" type="Default" press="onFilterGo"/>
+                </m:OverflowToolbar>
+            </toolbar>
+            <columns>
+              <Column name="Ponumber" width="auto" hAlign="Left">
+                <m:Label text="PO Number"/>
+                <template>
+                  <m:ObjectIdentifier title="{Ponumber}" text="Item No: {Poitem}" titleActive="true" visible="true" titlePress="onPressPONumber"/>
+                </template>
+              </Column>
+              <Column name="Material" width="auto" hAlign="Left" filterProperty="Material" defaultFilterOperator="StartsWith" sortProperty="Material">
+                <m:Label text="Material"/>
+                <template>
+                  <m:ObjectIdentifier title="{Material}" text="" titleActive="true" visible="true" titlePress="onPressMaterial"/>
+                </template>
+              </Column>
+              <Column name="Vendor" width="auto" hAlign="Left" filterProperty="Vendor" defaultFilterOperator="StartsWith" sortProperty="Vendor">
+                <m:Label text="Vendor"/>
+                <template>
+                  <m:ObjectIdentifier title="{path: 'Vendor', type: 'sap.ui.model.type.String'}" text="{Vendordescription}" titleActive="false" visible="true"/>
+                </template>
+              </Column>
+              <Column name="Poqty" width="auto" hAlign="Left">
+                <m:Label text="PO Qty"/>
+                <template>
+                  <m:ObjectNumber number="{path: 'Poqty', type: 'sap.ui.model.type.String'}" unit="Unit" emphasized="false" state="None"/>
+                </template>
+              </Column>
+              <Column name="Currentduedate" width="130px" hAlign="Left">
+                <m:Label text="Current Due Date"/>
+                <template>
+                  <m:Text text="{path: 'Currentduedate',type:'sap.ui.model.type.Date', formatOptions: { style: 'medium', UTC: 'true'}}" width="auto"
+                    maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                </template>
+              </Column>
+              <Column name="Confirmdate" width="135px" hAlign="Left">
+                <m:Label text="Confirmation Date"/>
+                <template>
+                  <m:Text text="{path: 'Confirmationdate',type:'sap.ui.model.type.Date', formatOptions: { style: 'medium',UTC: 'true'}}" width="auto"
+                    maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                </template>
+              </Column>
+              <Column name="Key" width="100px" hAlign="Left">
+                <m:Label text="Key/Rule"/>
+                <template>
+                  <m:ObjectIdentifier title="{Key}" text="{Rulename}" titleActive="true" visible="true" titlePress="onPressRuleName"/>
+                </template>
+              </Column>
+              <Column name="Action" width="150px" hAlign="Left" sortProperty="Action">
+                <m:Label text="Action"/>
+                <template>
+                  <m:ObjectStatus text="{Action}" state="{path: 'Action',formatter: '.formatAction'}" icon="{path: 'Action',formatter: '.formatIcon'}"/>
+                </template>
+              </Column>
+              <Column name="Rescheddate" width="170px" hAlign="Left">
+                <m:Label text="Reschedule Date"/>
+                <template>
+                  <m:DatePicker value="{path: 'Reschdeldate',type:'sap.ui.model.type.Date',formatOptions: {strictParsing: true,UTC: 'true'}}" enabled="true"
+                    visible="true" width="auto" change="onDatePickerChange"/>
+                </template>
+              </Column>
+            </columns>
+          </Table>
+        </m:items>
+      </m:VBox>
+    </m:content>
+    <m:footer>
+      <m:OverflowToolbar design="Auto">
+        <m:content>
+          <m:ToolbarSpacer/>
+          <m:Button id="buttonreschedule" text="{i18n>buttonReschedule}" type="Accept" iconFirst="true" width="auto" enabled="true" visible="true"
+            iconDensityAware="false" press="onReschedule"/>
+          <m:Button text="{i18n>buttonCancel}" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+            press="onCancel"/>
+          <m:Button text="Info" type="Emphasized" width="auto" enabled="true" visible="true" iconDensityAware="false" press="onClickMessage"/>
+        </m:content>
+      </m:OverflowToolbar>
+    </m:footer>
+  </m:Page>
+</mvc:View>

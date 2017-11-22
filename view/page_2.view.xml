@@ -1,0 +1,156 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="generated.app.controller.page_2" xmlns:uxap="sap.uxap" xmlns:m="sap.m"
+  xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form">
+  <uxap:ObjectPageLayout showTitleInHeaderContent="false" showHeaderContent="true" showEditHeaderButton="false" showFooter="false"
+    class="sapUiSizeCompact">
+    <uxap:headerTitle>
+      <uxap:ObjectPageHeader objectImageURI="" objectTitle="{Ponumber}" isObjectIconAlwaysVisible="false" isObjectTitleAlwaysVisible="true"
+        isObjectSubtitleAlwaysVisible="true" showPlaceholder="false">
+        <uxap:navigationBar>
+          <m:Bar>
+            <m:contentLeft>
+              <m:Button type="Back" press="_onFioriObjectPageHeaderPress"/>
+            </m:contentLeft>
+            <m:contentMiddle>
+              <m:Title text="{i18n>titlePoitems}"/>
+            </m:contentMiddle>
+            <m:contentRight/>
+          </m:Bar>
+        </uxap:navigationBar>
+        <uxap:actions/>
+      </uxap:ObjectPageHeader>
+    </uxap:headerTitle>
+    <uxap:headerContent/>
+    <uxap:sections>
+      <uxap:ObjectPageSection title="{i18n>titlePodetail}">
+        <uxap:subSections>
+          <uxap:ObjectPageSubSection title="{i18n>titlePodetail}">
+            <uxap:blocks>
+              <layout:Grid >
+                <layout:content>
+                  <form:Form>
+                    <form:layout>
+                      <form:ResponsiveGridLayout labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0"
+                        emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="4" columnsL="3" columnsM="2" singleContainerFullSize="false"/>
+                    </form:layout>
+                    <form:formContainers>
+                      <form:FormContainer title="">
+                        <form:formElements>
+                          <form:FormElement>
+                            <form:label>
+                              <m:Label text="{i18n>labelPonum}" required="false"/>
+                            </form:label>
+                            <form:fields>
+                              <m:ObjectStatus text="{Ponumber}"/>
+                            </form:fields>
+                          </form:FormElement>
+                          <form:FormElement>
+                            <form:label>
+                              <m:Label text="{i18n>labelDocdate}" required="false"/>
+                            </form:label>
+                            <form:fields>
+                              <m:ObjectStatus text="{path: 'Docdate' , type:'sap.ui.model.type.Date', formatOptions: { style: 'medium'}}"/>
+                            </form:fields>
+                          </form:FormElement>
+                          <form:FormElement>
+                            <form:label>
+                              <m:Label text="{i18n>labelPurorg}" required="false"/>
+                            </form:label>
+                            <form:fields>
+                              <m:ObjectStatus text="{Purchasingorg}"/>
+                            </form:fields>
+                          </form:FormElement>
+                          <form:FormElement>
+                            <form:label>
+                              <m:Label text="{i18n>labelVendor}" required="false"/>
+                            </form:label>
+                            <form:fields>
+                              <m:HBox>
+                                <m:items>
+                                  <m:Text text="{Vendor}"/>
+                                  <m:Text text="(" class="sapUiTinyMarginBegin"/>
+                                  <m:Text text="{Vendorname}"/>
+                                  <m:Text text=")"/>
+                                </m:items>
+                              </m:HBox>
+                            </form:fields>
+                          </form:FormElement>
+                        </form:formElements>
+                      </form:FormContainer>
+                    </form:formContainers>
+                  </form:Form>
+                </layout:content>
+              </layout:Grid>
+            </uxap:blocks>
+          </uxap:ObjectPageSubSection>
+        </uxap:subSections>
+      </uxap:ObjectPageSection>
+      <uxap:ObjectPageSection title="{i18n>labelItemdetails}">
+        <uxap:subSections>
+          <uxap:ObjectPageSubSection title="{i18n>labelItemdetails}">
+            <uxap:blocks>
+              <m:Table id="poListItems" width="100%" growing="true" growingScrollToLoad="true" growingThreshold="25" mode="None"
+                items="{path: 'POHeaderToPoItemNav'}" >
+                <m:columns>
+                  <m:Column width="auto" minScreenWidth="Phone">
+                    <m:header>
+                      <m:Text text="{i18n>labelItemno}" width="auto"/>
+                    </m:header>
+                  </m:Column>
+                  <m:Column width="auto" minScreenWidth="Tablet" demandPopin="true">
+                    <m:header>
+                      <m:Text text="{i18n>labelMat}" width="auto"/>
+                    </m:header>
+                  </m:Column>
+                  <m:Column width="auto" minScreenWidth="Phone">
+                    <m:header>
+                      <m:Text text="{i18n>labelMatdesc}" width="auto"/>
+                    </m:header>
+                  </m:Column>
+                  <m:Column width="auto" minScreenWidth="Phone">
+                    <m:header>
+                      <m:Text text="{i18n>labelPoqty}" width="auto"/>
+                    </m:header>
+                  </m:Column>
+                  <m:Column width="auto" minScreenWidth="Phone">
+                    <m:header>
+                      <m:Text text="{i18n>labelPlant}" width="auto"/>
+                    </m:header>
+                  </m:Column>
+                  <m:Column width="auto" minScreenWidth="Phone">
+                    <m:header>
+                      <m:Text text="{i18n>labelDeldate}" width="auto"/>
+                    </m:header>
+                  </m:Column>
+                  <m:Column width="auto" minScreenWidth="Phone">
+                    <m:header>
+                      <m:Text text="{i18n>labelConfdate}" width="auto"/>
+                    </m:header>
+                  </m:Column>
+                </m:columns>
+                <m:items>
+                  <m:ColumnListItem id="poList" type="Active">
+                    <m:cells>
+                      <m:Text text="{Poitem}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                      <m:Text text="{Matnr}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                      <m:Text text="{Maktx}" width="auto" maxLines="2" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                      <m:HBox>
+                        <m:items>
+                          <m:ObjectNumber number="{path: 'Poqty', type: 'sap.ui.model.type.String'}" unit="{Uom}" emphasized="false"/>
+                        </m:items>
+                      </m:HBox>
+                      <m:Text text="{Plant}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                      <m:Text text="{path: 'Delvdate',type:'sap.ui.model.type.Date', formatOptions: { style: 'medium'}}" width="auto" maxLines="1"
+                        wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                      <m:Text text="{path: 'Confdate',type:'sap.ui.model.type.Date', formatOptions: { style: 'medium'}}" width="auto" maxLines="1"
+                        wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                    </m:cells>
+                  </m:ColumnListItem>
+                </m:items>
+              </m:Table>
+            </uxap:blocks>
+          </uxap:ObjectPageSubSection>
+        </uxap:subSections>
+      </uxap:ObjectPageSection>
+    </uxap:sections>
+  </uxap:ObjectPageLayout>
+</mvc:View>

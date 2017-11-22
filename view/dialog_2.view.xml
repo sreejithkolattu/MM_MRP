@@ -1,0 +1,45 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="generated.app.controller.dialog_2" xmlns:m="sap.m" xmlns:layout="sap.ui.layout">
+	<m:Dialog id="dialogMaterial" horizontalScrolling="true" showHeader="true" state="None" stretch="true" title="Supply Demand Page"
+		type="Standard" verticalScrolling="true">
+		<m:content>
+			<layout:VerticalLayout width="100%" visible="true">
+				<layout:content>
+					<m:ObjectListItem id="objHeader" intro="" title="{Matnr}" icon="sap-icon://product" number="{Plant}" numberUnit="" numberState="None"
+						type="Active" selected="false" showMarkers="false">
+						<m:attributes>
+							<m:ObjectAttribute title="{i18n>labelCurrentdos}" text="{Currentdos}" active="false"/>
+							<m:ObjectAttribute title="{i18n>labelCurrentdii}" text="{Currentdii}" active="false"/>
+							<m:ObjectAttribute title="{i18n>labelABCClass}" text="{AbcClass}" active="false"/>
+						</m:attributes>
+						<m:firstStatus/>
+						<m:secondStatus/>
+					</m:ObjectListItem>
+				</layout:content>
+			</layout:VerticalLayout>
+			<m:IconTabBar id="dailyView" selectedKey="" applyContentPadding="false" expandable="false" select="onSelectTab" expanded="true"
+				visible="true">
+				<m:items>
+					<m:IconTabFilter id="dailyPlan" text="{i18n>labelDailyview}" tooltip="Daily Planning(4 Weeks)">
+						<m:content id="dailyPlanView"></m:content>
+					</m:IconTabFilter>
+					<m:IconTabFilter id="weeklyPlan" text="{i18n>labelWeekly}">
+						<m:content id="weeklyPlanView"></m:content>
+					</m:IconTabFilter>
+					<m:IconTabFilter id="monthlyPlan" text="{i18n>labelMonthly}">
+						<m:content id="monthlyPlanView"></m:content>
+					</m:IconTabFilter>
+				</m:items>
+			</m:IconTabBar>
+		</m:content>
+		<m:beginButton></m:beginButton>
+		<m:buttons>
+			<m:Button id="executeChange" text="{i18n>labelExecute}" type="Accept" iconFirst="true" width="auto" enabled="true" visible="true"
+				iconDensityAware="false" press="_onExecuteChange"/>
+			<m:Button text="{i18n>buttonCancel}" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+				press="_onDialogCancel"/>
+		</m:buttons>
+		<m:customHeader/>
+		<m:endButton/>
+		<m:subHeader/>
+	</m:Dialog>
+</mvc:View>
